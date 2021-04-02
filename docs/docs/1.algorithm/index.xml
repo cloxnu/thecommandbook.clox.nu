@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The Command Book</title>
+    <title>I. 算法 on The Command Book</title>
     <link>https://thecommandbook.clox.nu/docs/1.algorithm/</link>
-    <description>Recent content on The Command Book</description>
+    <description>Recent content in I. 算法 on The Command Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn-zh</language><atom:link href="https://thecommandbook.clox.nu/docs/1.algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
+      <title>二叉树</title>
       <link>https://thecommandbook.clox.nu/docs/1.algorithm/binary-tree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -20,7 +20,7 @@ class TreeNode: def __init__(self, value, left=None, right=None): self.value = v
     </item>
     
     <item>
-      <title></title>
+      <title>排序</title>
       <link>https://thecommandbook.clox.nu/docs/1.algorithm/sorting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
