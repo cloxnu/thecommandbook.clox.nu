@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="二叉树 #  二叉树 (Binary tree) 是每个节点最多只有两个分支的树结构。其结构定义如下：
+class TreeNode: def __init__(self, value, left=None, right=None): self.value = value self.left = left self.right = right def visit(self): print(self.value, end=&#34; &#34;) # 访问当前结点 遍历 #  树的遍历 是图的遍历的一种，指的是按照某种规则，不重复地访问某种树的所有节点的过程。
+遍历可分为 深度优先遍历 和 广度优先遍历，深度优先遍历又分为 前序遍历 (Pre-Order Traversal)、中序遍历 (In-Order Traversal)、后序遍历 (Post-Order Traversal)；而广度优先搜索则对应 层序遍历。
+测试树如下：
+ A / \ B C / \ / \ D E F G / \ H I 正确的前序遍历： A B D E C F H I G 正确的中序遍历： D B E A H F I C G 正确的后序遍历： D E B H I F G C A 正确的层序遍历： A B C D E F G H I test = TreeNode(&#39;A&#39;, left=TreeNode(&#39;B&#39;, left=TreeNode(&#39;D&#39;), right=TreeNode(&#39;E&#39;)),right=TreeNode(&#39;C&#39;, left=TreeNode(&#39;F&#39;, left=TreeNode(&#39;H&#39;), right=TreeNode(&#39;I&#39;)), right=TreeNode(&#39;G&#39;))) 递归形式 #  前序遍历 def preorder(node: TreeNode): if node is None: return node.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="二叉树 #  二叉树 (Binary tree) 是每个节点最多只有两个分支的树结构。其结构定义如下：
+class TreeNode: def __init__(self, value, left=None, right=None): self.value = value self.left = left self.right = right def visit(self): print(self.value, end=&#34; &#34;) # 访问当前结点 遍历 #  树的遍历 是图的遍历的一种，指的是按照某种规则，不重复地访问某种树的所有节点的过程。
+遍历可分为 深度优先遍历 和 广度优先遍历，深度优先遍历又分为 前序遍历 (Pre-Order Traversal)、中序遍历 (In-Order Traversal)、后序遍历 (Post-Order Traversal)；而广度优先搜索则对应 层序遍历。
+测试树如下：
+ A / \ B C / \ / \ D E F G / \ H I 正确的前序遍历： A B D E C F H I G 正确的中序遍历： D B E A H F I C G 正确的后序遍历： D E B H I F G C A 正确的层序遍历： A B C D E F G H I test = TreeNode(&#39;A&#39;, left=TreeNode(&#39;B&#39;, left=TreeNode(&#39;D&#39;), right=TreeNode(&#39;E&#39;)),right=TreeNode(&#39;C&#39;, left=TreeNode(&#39;F&#39;, left=TreeNode(&#39;H&#39;), right=TreeNode(&#39;I&#39;)), right=TreeNode(&#39;G&#39;))) 递归形式 #  前序遍历 def preorder(node: TreeNode): if node is None: return node." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thecommandbook.clox.nu/docs/1.algorithm/binary-tree/" />
+
+<title>Index | The Command Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
+<script defer src="/en.search.min.0ef7a63fcd95836dcb07c88f4c8c1c52f4eb4ccc25b452f482c2ccd447548cb0.js" integrity="sha256-DvemP82Vg23LB8iPTIwcUvTrTMwltFL0gsLM1EdUjLA="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>The Command Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><a href="/docs/1.algorithm/"><strong>I. 算法</strong></a>
+<ul>
+<li><a href="/docs/1.algorithm/binary-tree/"class=active>二叉树</a></li>
+<li><a href="/docs/1.algorithm/sorting/">排序</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://clox.nu/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Index</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#遍历">遍历</a>
+      <ul>
+        <li><a href="#递归形式">递归形式</a></li>
+        <li><a href="#迭代形式">迭代形式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="二叉树">
+  二叉树
+  <a class="anchor" href="#%e4%ba%8c%e5%8f%89%e6%a0%91">#</a>
+</h1>
+<p><a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树</a> (Binary tree) 是每个节点最多只有两个分支的树结构。其结构定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TreeNode</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, value, left<span style="color:#f92672">=</span>None, right<span style="color:#f92672">=</span>None):
+        self<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> value
+        self<span style="color:#f92672">.</span>left <span style="color:#f92672">=</span> left
+        self<span style="color:#f92672">.</span>right <span style="color:#f92672">=</span> right
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">visit</span>(self):
+        <span style="color:#66d9ef">print</span>(self<span style="color:#f92672">.</span>value, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)  <span style="color:#75715e"># 访问当前结点</span>
+</code></pre></div><h2 id="遍历">
+  遍历
+  <a class="anchor" href="#%e9%81%8d%e5%8e%86">#</a>
+</h2>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86">树的遍历</a> 是图的遍历的一种，指的是按照某种规则，不重复地访问某种树的所有节点的过程。</p>
+<p>遍历可分为 <strong>深度优先遍历</strong> 和 <strong>广度优先遍历</strong>，深度优先遍历又分为 <strong>前序遍历</strong> (Pre-Order Traversal)、<strong>中序遍历</strong> (In-Order Traversal)、<strong>后序遍历</strong> (Post-Order Traversal)；而广度优先搜索则对应 <strong>层序遍历</strong>。</p>
+<p>测试树如下：</p>
+<pre><code>     A
+   /   \
+  B     C
+ / \   / \
+D   E F   G
+     / \
+    H   I
+
+正确的前序遍历： A B D E C F H I G
+正确的中序遍历： D B E A H F I C G
+正确的后序遍历： D E B H I F G C A
+正确的层序遍历： A B C D E F G H I
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test <span style="color:#f92672">=</span> TreeNode(<span style="color:#e6db74">&#39;A&#39;</span>, left<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;B&#39;</span>, left<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;D&#39;</span>), right<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;E&#39;</span>)),right<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;C&#39;</span>, left<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;F&#39;</span>, left<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;H&#39;</span>), right<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;I&#39;</span>)), right<span style="color:#f92672">=</span>TreeNode(<span style="color:#e6db74">&#39;G&#39;</span>)))
+</code></pre></div><h3 id="递归形式">
+  递归形式
+  <a class="anchor" href="#%e9%80%92%e5%bd%92%e5%bd%a2%e5%bc%8f">#</a>
+</h3>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-binary-tree-recur" id="tabs-binary-tree-recur-0" checked="checked" />
+  <label for="tabs-binary-tree-recur-0">前序遍历</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preorder</span>(node: TreeNode):
+    <span style="color:#66d9ef">if</span> node <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    node<span style="color:#f92672">.</span>visit()  <span style="color:#75715e"># 访问当前结点</span>
+    preorder(node<span style="color:#f92672">.</span>left)
+    preorder(node<span style="color:#f92672">.</span>right)
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-binary-tree-recur" id="tabs-binary-tree-recur-1"  />
+  <label for="tabs-binary-tree-recur-1">中序遍历</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inorder</span>(node: TreeNode):
+    <span style="color:#66d9ef">if</span> node <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    inorder(node<span style="color:#f92672">.</span>left)
+    node<span style="color:#f92672">.</span>visit()  <span style="color:#75715e"># 访问当前结点</span>
+    inorder(node<span style="color:#f92672">.</span>right)
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-binary-tree-recur" id="tabs-binary-tree-recur-2"  />
+  <label for="tabs-binary-tree-recur-2">后序遍历</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">postorder</span>(node: TreeNode):
+    <span style="color:#66d9ef">if</span> node <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    postorder(node<span style="color:#f92672">.</span>left)
+    postorder(node<span style="color:#f92672">.</span>right)
+    node<span style="color:#f92672">.</span>visit()  <span style="color:#75715e"># 访问当前结点</span>
+</code></pre></div></div></div>
+
+<h3 id="迭代形式">
+  迭代形式
+  <a class="anchor" href="#%e8%bf%ad%e4%bb%a3%e5%bd%a2%e5%bc%8f">#</a>
+</h3>
+<h4 id="栈模拟递归">
+  栈模拟递归
+  <a class="anchor" href="#%e6%a0%88%e6%a8%a1%e6%8b%9f%e9%80%92%e5%bd%92">#</a>
+</h4>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-binary-tree-iter-stack" id="tabs-binary-tree-iter-stack-0" checked="checked" />
+  <label for="tabs-binary-tree-iter-stack-0">前序遍历 1</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preorder_iter</span>(root: TreeNode):
+    <span style="color:#66d9ef">if</span> root <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    stack <span style="color:#f92672">=</span> [root]
+    <span style="color:#66d9ef">while</span> stack:
+        node <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+        <span style="color:#66d9ef">if</span> node <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">continue</span>
+        node<span style="color:#f92672">.</span>visit()  <span style="color:#75715e"># 访问当前结点</span>
+        stack<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>right)  <span style="color:#75715e"># 先入栈右子树</span>
+        stack<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>left)  <span style="color:#75715e"># 再入栈左子树</span>
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-binary-tree-iter-stack" id="tabs-binary-tree-iter-stack-1"  />
+  <label for="tabs-binary-tree-iter-stack-1">后序遍历 1</label>
+  <div class="book-tabs-content markdown-inner"><p>后序遍历 1：类前序遍历 1 + reverse：先用栈模拟，再利用双栈将 根-右-左 的结果反过来</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">postorder_iter</span>(root: TreeNode):
+    <span style="color:#66d9ef">if</span> root <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    stack <span style="color:#f92672">=</span> [root]
+    res <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">while</span> stack:
+        node <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+        <span style="color:#66d9ef">if</span> node <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">continue</span>
+        res<span style="color:#f92672">.</span>append(node)
+        stack<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>left)  <span style="color:#75715e"># 先入栈左子树</span>
+        stack<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>right)  <span style="color:#75715e"># 再入栈右子树</span>
+    <span style="color:#66d9ef">for</span> node <span style="color:#f92672">in</span> reversed(res):
+        node<span style="color:#f92672">.</span>visit()
+</code></pre></div></div></div>
+
+<h4 id="迭代遍历模板">
+  迭代遍历模板
+  <a class="anchor" href="#%e8%bf%ad%e4%bb%a3%e9%81%8d%e5%8e%86%e6%a8%a1%e6%9d%bf">#</a>
+</h4>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-binary-tree-iter" id="tabs-binary-tree-iter-0" checked="checked" />
+  <label for="tabs-binary-tree-iter-0">前序遍历 2</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preorder_iter2</span>(root: TreeNode):
+    <span style="color:#66d9ef">if</span> root <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    stack <span style="color:#f92672">=</span> []
+    node <span style="color:#f92672">=</span> root
+    <span style="color:#66d9ef">while</span> node <span style="color:#f92672">or</span> stack:
+        <span style="color:#66d9ef">while</span> node:  <span style="color:#75715e"># 先找最左的 node，路途依次入栈</span>
+            node<span style="color:#f92672">.</span>visit()  <span style="color:#75715e"># 根</span>
+            stack<span style="color:#f92672">.</span>append(node)
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>left  <span style="color:#75715e"># 左</span>
+        node <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+        node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>right  <span style="color:#75715e"># 右</span>
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-binary-tree-iter" id="tabs-binary-tree-iter-1"  />
+  <label for="tabs-binary-tree-iter-1">中序遍历</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inorder_iter</span>(root: TreeNode):
+    <span style="color:#66d9ef">if</span> root <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    stack <span style="color:#f92672">=</span> []
+    node <span style="color:#f92672">=</span> root
+    <span style="color:#66d9ef">while</span> node <span style="color:#f92672">or</span> stack:
+        <span style="color:#66d9ef">while</span> node:  <span style="color:#75715e"># 先找最左的 node，路途依次入栈</span>
+            stack<span style="color:#f92672">.</span>append(node)
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>left  <span style="color:#75715e"># 左</span>
+        node <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+        node<span style="color:#f92672">.</span>visit()  <span style="color:#75715e"># 根</span>
+        node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>right  <span style="color:#75715e"># 右</span>
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-binary-tree-iter" id="tabs-binary-tree-iter-2"  />
+  <label for="tabs-binary-tree-iter-2">后序遍历 2</label>
+  <div class="book-tabs-content markdown-inner"><p>后序遍历 2：类前序遍历 2 + reverse：先用树的非递归模板，再利用双栈将 根-右-左 的结果反过来</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">postorder_iter2</span>(root: TreeNode):
+    <span style="color:#66d9ef">if</span> root <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    stack, res <span style="color:#f92672">=</span> [], []
+    node <span style="color:#f92672">=</span> root
+    <span style="color:#66d9ef">while</span> node <span style="color:#f92672">or</span> stack:
+        <span style="color:#66d9ef">while</span> node:  <span style="color:#75715e"># 先找最右的 node，路途依次入栈</span>
+            res<span style="color:#f92672">.</span>append(node)  <span style="color:#75715e"># 根</span>
+            stack<span style="color:#f92672">.</span>append(node)
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>right  <span style="color:#75715e"># 右</span>
+        node <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+        node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>left  <span style="color:#75715e"># 左</span>
+    <span style="color:#66d9ef">for</span> node <span style="color:#f92672">in</span> reversed(res):
+        node<span style="color:#f92672">.</span>visit()
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-binary-tree-iter" id="tabs-binary-tree-iter-3"  />
+  <label for="tabs-binary-tree-iter-3">层序遍历</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">levelorder_iter</span>(root: TreeNode):
+    <span style="color:#66d9ef">if</span> root <span style="color:#f92672">is</span> None: <span style="color:#66d9ef">return</span>
+    queue <span style="color:#f92672">=</span> [root]
+    <span style="color:#66d9ef">while</span> queue:
+        node <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+        node<span style="color:#f92672">.</span>visit()
+        <span style="color:#66d9ef">if</span> node<span style="color:#f92672">.</span>left <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None: queue<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>left)
+        <span style="color:#66d9ef">if</span> node<span style="color:#f92672">.</span>right <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None: queue<span style="color:#f92672">.</span>append(node<span style="color:#f92672">.</span>right)
+</code></pre></div></div></div>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#遍历">遍历</a>
+      <ul>
+        <li><a href="#递归形式">递归形式</a></li>
+        <li><a href="#迭代形式">迭代形式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

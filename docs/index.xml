@@ -6,5 +6,27 @@
     <description>Recent content in Introduction on The Command Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn-zh</language><atom:link href="https://thecommandbook.clox.nu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://thecommandbook.clox.nu/docs/1.algorithm/binary-tree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/1.algorithm/binary-tree/</guid>
+      <description>二叉树 #  二叉树 (Binary tree) 是每个节点最多只有两个分支的树结构。其结构定义如下：
+class TreeNode: def __init__(self, value, left=None, right=None): self.value = value self.left = left self.right = right def visit(self): print(self.value, end=&amp;#34; &amp;#34;) # 访问当前结点 遍历 #  树的遍历 是图的遍历的一种，指的是按照某种规则，不重复地访问某种树的所有节点的过程。
+遍历可分为 深度优先遍历 和 广度优先遍历，深度优先遍历又分为 前序遍历 (Pre-Order Traversal)、中序遍历 (In-Order Traversal)、后序遍历 (Post-Order Traversal)；而广度优先搜索则对应 层序遍历。
+测试树如下：
+ A / \ B C / \ / \ D E F G / \ H I 正确的前序遍历： A B D E C F H I G 正确的中序遍历： D B E A H F I C G 正确的后序遍历： D E B H I F G C A 正确的层序遍历： A B C D E F G H I test = TreeNode(&amp;#39;A&amp;#39;, left=TreeNode(&amp;#39;B&amp;#39;, left=TreeNode(&amp;#39;D&amp;#39;), right=TreeNode(&amp;#39;E&amp;#39;)),right=TreeNode(&amp;#39;C&amp;#39;, left=TreeNode(&amp;#39;F&amp;#39;, left=TreeNode(&amp;#39;H&amp;#39;), right=TreeNode(&amp;#39;I&amp;#39;)), right=TreeNode(&amp;#39;G&amp;#39;))) 递归形式 #  前序遍历 def preorder(node: TreeNode): if node is None: return node.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://thecommandbook.clox.nu/docs/1.algorithm/sorting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/1.algorithm/sorting/</guid>
+      <description>排序 #  堆排序 #  堆排序的平均和最差情况时间均为   \(O(n \log n)\)  ，空间为  \(O(1)\)  递归形式 def heap_sort(nums: list) -&amp;gt; list: def adjust(heap: list, start, end): left = start * 2 + 1 right = left + 1 if left &amp;gt;= end: return max_child = right if right &amp;lt; end and heap[left] &amp;lt; heap[right] else left # 选取最大的子结点 if heap[start] &amp;lt; heap[max_child]: heap[start], heap[max_child] = heap[max_child], heap[start] adjust(heap, max_child, end) # 从最后一个结点的父结点开始建堆 for i in reversed(range(len(nums) // 2)): adjust(nums, i, len(nums)) # 将最大结点交换至最后并调整堆 for i in reversed(range(len(nums))): nums[0], nums[i] = nums[i], nums[0] adjust(nums, 0, i) return nums 迭代形式 def heap_sort_iter(nums: list) -&amp;gt; list: def adjust(heap: list, start, end): while start &amp;lt; end: left = start * 2 + 1 right = left + 1 if left &amp;gt;= end: break max_child = right if right &amp;lt; end and heap[left] &amp;lt; heap[right] else left # 选取最大的子结点 if heap[start] &amp;gt;= heap[max_child]: break heap[start], heap[max_child] = heap[max_child], heap[start] start = max_child # 从最后一个结点的父结点开始建堆 for i in reversed(range(len(nums) // 2)): adjust(nums, i, len(nums)) # 将最大结点交换至最后并调整堆 for i in reversed(range(len(nums))): nums[0], nums[i] = nums[i], nums[0] adjust(nums, 0, i) return nums  归并排序 #  归并排序的平均和最差情况时间均为  \(O(n \log n)\)  ，空间为  \(O(n)\)  类似二叉树的 后序 遍历，先 recur 左右，再 visit 自己，所以迭代采用树的后序遍历模板</description>
+    </item>
+    
   </channel>
 </rss>
