@@ -42,7 +42,8 @@ test = TreeNode('A', left=TreeNode('B', left=TreeNode('D'), right=TreeNode('E'))
 
 ### 递归形式
 
-#### 前序遍历
+{{< tabs "binary-tree-recur" >}}
+{{< tab "前序遍历" >}}
 
 ```python
 def preorder(node: TreeNode):
@@ -52,7 +53,8 @@ def preorder(node: TreeNode):
     preorder(node.right)
 ```
 
-#### 中序遍历
+{{< /tab >}}
+{{< tab "中序遍历" >}}
 
 ```python
 def inorder(node: TreeNode):
@@ -62,7 +64,8 @@ def inorder(node: TreeNode):
     inorder(node.right)
 ```
 
-#### 后序遍历
+{{< /tab >}}
+{{< tab "后序遍历" >}}
 
 ```python
 def postorder(node: TreeNode):
@@ -72,9 +75,15 @@ def postorder(node: TreeNode):
     node.visit()  # 访问当前结点
 ```
 
+{{< /tab >}}
+{{< /tabs >}}
+
 ### 迭代形式
 
-#### 前序遍历 1：栈模拟递归
+#### 栈模拟递归
+
+{{< tabs "binary-tree-iter-stack" >}}
+{{< tab "前序遍历 1" >}}
 
 ```python
 def preorder_iter(root: TreeNode):
@@ -88,7 +97,10 @@ def preorder_iter(root: TreeNode):
         stack.append(node.left)  # 再入栈左子树
 ```
 
-#### 后序遍历 1：类前序遍历 1 + reverse：先用栈模拟，再利用双栈将 根-右-左 的结果反过来
+{{< /tab >}}
+{{< tab "后序遍历 1" >}}
+
+后序遍历 1：类前序遍历 1 + reverse：先用栈模拟，再利用双栈将 根-右-左 的结果反过来
 
 ```python
 def postorder_iter(root: TreeNode):
@@ -105,7 +117,13 @@ def postorder_iter(root: TreeNode):
         node.visit()
 ```
 
-#### 前序遍历 2
+{{< /tab >}}
+{{< /tabs >}}
+
+#### 迭代遍历模板
+
+{{< tabs "binary-tree-iter" >}}
+{{< tab "前序遍历 2" >}}
 
 ```python
 def preorder_iter2(root: TreeNode):
@@ -121,7 +139,8 @@ def preorder_iter2(root: TreeNode):
         node = node.right  # 右
 ```
 
-#### 中序遍历
+{{< /tab >}}
+{{< tab "中序遍历" >}}
 
 ```python
 def inorder_iter(root: TreeNode):
@@ -137,7 +156,10 @@ def inorder_iter(root: TreeNode):
         node = node.right  # 右
 ```
 
-#### 后序遍历 2：类前序遍历 2 + reverse：先用树的非递归模板，再利用双栈将 根-右-左 的结果反过来
+{{< /tab >}}
+{{< tab "后序遍历 2" >}}
+
+后序遍历 2：类前序遍历 2 + reverse：先用树的非递归模板，再利用双栈将 根-右-左 的结果反过来
 
 ```python
 def postorder_iter2(root: TreeNode):
@@ -155,7 +177,8 @@ def postorder_iter2(root: TreeNode):
         node.visit()
 ```
 
-#### 层序遍历
+{{< /tab >}}
+{{< tab "层序遍历" >}}
 
 ```python
 def levelorder_iter(root: TreeNode):
@@ -167,5 +190,8 @@ def levelorder_iter(root: TreeNode):
         if node.left is not None: queue.append(node.left)
         if node.right is not None: queue.append(node.right)
 ```
+
+{{< /tab >}}
+{{< /tabs >}}
 
 
