@@ -1,3 +1,19 @@
 baseURL: https://thecommandbook.clox.nu/
-languageCode: en-us
+languageCode: cn-zh
 title: The Command Book
+theme: book
+
+publishdir: ../docs/
+
+menu:
+  after:
+    - name: "关于我"
+      url: "https://clox.nu/"
+      weight: 1
+
+params:
+  BookTheme: "auto"
+  BookToc: true
+  BookMenuBundle: /menu
+  BookRepo: https://github.com/cloxnu/thecommandbook.clox.nu
+  BookComments: true
