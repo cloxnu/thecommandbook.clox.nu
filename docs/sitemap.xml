@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://thecommandbook.clox.nu/docs/1.algorithm/</loc>
+    <loc>https://thecommandbook.clox.nu/docs/algorithm/</loc>
   </url>
   
   <url>
@@ -23,11 +23,11 @@
   </url>
   
   <url>
-    <loc>https://thecommandbook.clox.nu/docs/1.algorithm/binary-tree/</loc>
+    <loc>https://thecommandbook.clox.nu/docs/algorithm/binary-tree/</loc>
   </url>
   
   <url>
-    <loc>https://thecommandbook.clox.nu/docs/1.algorithm/sorting/</loc>
+    <loc>https://thecommandbook.clox.nu/docs/algorithm/sorting/</loc>
   </url>
   
 </urlset>
