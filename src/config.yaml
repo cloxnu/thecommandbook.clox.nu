@@ -3,6 +3,7 @@ languageCode: cn-zh
 title: The Command Book
 theme: book
 
+disqusShortname: thecommandbook-clox-nu
 publishdir: ../docs/
 
 menu:
