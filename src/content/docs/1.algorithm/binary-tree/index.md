@@ -1,3 +1,7 @@
+---
+title: 二叉树
+---
+
 # 二叉树
 
 [二叉树](https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91) (Binary tree) 是每个节点最多只有两个分支的树结构。其结构定义如下：
