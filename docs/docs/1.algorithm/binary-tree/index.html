@@ -10,7 +10,7 @@ class TreeNode: def __init__(self, value, left=None, right=None): self.value = v
 遍历可分为 深度优先遍历 和 广度优先遍历，深度优先遍历又分为 前序遍历 (Pre-Order Traversal)、中序遍历 (In-Order Traversal)、后序遍历 (Post-Order Traversal)；而广度优先搜索则对应 层序遍历。
 测试树如下：
  A / \ B C / \ / \ D E F G / \ H I 正确的前序遍历： A B D E C F H I G 正确的中序遍历： D B E A H F I C G 正确的后序遍历： D E B H I F G C A 正确的层序遍历： A B C D E F G H I test = TreeNode(&#39;A&#39;, left=TreeNode(&#39;B&#39;, left=TreeNode(&#39;D&#39;), right=TreeNode(&#39;E&#39;)),right=TreeNode(&#39;C&#39;, left=TreeNode(&#39;F&#39;, left=TreeNode(&#39;H&#39;), right=TreeNode(&#39;I&#39;)), right=TreeNode(&#39;G&#39;))) 递归形式 #  前序遍历 def preorder(node: TreeNode): if node is None: return node.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="二叉树" />
 <meta property="og:description" content="二叉树 #  二叉树 (Binary tree) 是每个节点最多只有两个分支的树结构。其结构定义如下：
 class TreeNode: def __init__(self, value, left=None, right=None): self.value = value self.left = left self.right = right def visit(self): print(self.value, end=&#34; &#34;) # 访问当前结点 遍历 #  树的遍历 是图的遍历的一种，指的是按照某种规则，不重复地访问某种树的所有节点的过程。
 遍历可分为 深度优先遍历 和 广度优先遍历，深度优先遍历又分为 前序遍历 (Pre-Order Traversal)、中序遍历 (In-Order Traversal)、后序遍历 (Post-Order Traversal)；而广度优先搜索则对应 层序遍历。
@@ -19,11 +19,11 @@ class TreeNode: def __init__(self, value, left=None, right=None): self.value = v
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thecommandbook.clox.nu/docs/1.algorithm/binary-tree/" />
 
-<title>Index | The Command Book</title>
+<title>二叉树 | The Command Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
-<script defer src="/en.search.min.0ef7a63fcd95836dcb07c88f4c8c1c52f4eb4ccc25b452f482c2ccd447548cb0.js" integrity="sha256-DvemP82Vg23LB8iPTIwcUvTrTMwltFL0gsLM1EdUjLA="></script>
+<script defer src="/en.search.min.70a48f2dfcf117c096cb6ddfea8eb5e5c28cdfc0ee62bfb0de519b2efb8c539b.js" integrity="sha256-cKSPLfzxF8CWy23f6o615cKM38DuYr&#43;w3lGbLvuMU5s="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -112,7 +112,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Index</strong>
+  <strong>二叉树</strong>
 
   <label for="toc-control">
     
