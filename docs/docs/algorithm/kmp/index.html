@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="KMP 算法 #  Knuth-Morris-Pratt 字符串查找算法 （简称为 KMP 算法）可在一个字符串 S 内查找一个词 W 的出现位置。一个词在不匹配时本身就包含足够的信息来确定下一个匹配可能的开始位置，此算法利用这一特性以避免重新检查先前匹配的字符。
+以下示例是在 s 中寻找 p
+样例：
+   p a b a b a b c a     idx 0 1 2 3 4 5 6 7   PMT 0 0 1 2 3 4 0 1   next -1 0 0 1 2 3 4 0    PMT (Partial Match Table) 部分匹配表，是指字符串的前缀集合与后缀集合的交集中最长元素的长度">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="KMP 算法" />
+<meta property="og:description" content="KMP 算法 #  Knuth-Morris-Pratt 字符串查找算法 （简称为 KMP 算法）可在一个字符串 S 内查找一个词 W 的出现位置。一个词在不匹配时本身就包含足够的信息来确定下一个匹配可能的开始位置，此算法利用这一特性以避免重新检查先前匹配的字符。
+以下示例是在 s 中寻找 p
+样例：
+   p a b a b a b c a     idx 0 1 2 3 4 5 6 7   PMT 0 0 1 2 3 4 0 1   next -1 0 0 1 2 3 4 0    PMT (Partial Match Table) 部分匹配表，是指字符串的前缀集合与后缀集合的交集中最长元素的长度" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thecommandbook.clox.nu/docs/algorithm/kmp/" />
+
+<title>KMP 算法 | The Command Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
+<script defer src="/en.search.min.c20089f322d363e0d62743b7fd0403bccfd2a67e8345508f044923a35c45450e.js" integrity="sha256-wgCJ8yLTY&#43;DWJ0O3/QQDvM/Spn6DRVCPBEkjo1xFRQ4="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>The Command Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><a href="/docs/algorithm/"><strong>算法</strong></a>
+<ul>
+<li><a href="/docs/algorithm/binary-tree/">二叉树</a></li>
+<li><a href="/docs/algorithm/sorting/">排序</a></li>
+<li><a href="/docs/algorithm/mono-stack/">单调栈</a></li>
+<li><a href="/docs/algorithm/linked-list/">链表</a></li>
+<li><a href="/docs/algorithm/union-find/">并查集</a></li>
+<li><a href="/docs/algorithm/knapsack/">背包问题</a></li>
+<li><a href="/docs/algorithm/kmp/"class=active>KMP 算法</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://clox.nu/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>KMP 算法</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="kmp-算法">
+  KMP 算法
+  <a class="anchor" href="#kmp-%e7%ae%97%e6%b3%95">#</a>
+</h1>
+<p><a href="https://zh.wikipedia.org/wiki/KMP%E7%AE%97%E6%B3%95">Knuth-Morris-Pratt 字符串查找算法</a> （简称为 KMP 算法）可在一个字符串 <code>S</code> 内查找一个词 <code>W</code> 的出现位置。一个词在不匹配时本身就包含足够的信息来确定下一个匹配可能的开始位置，此算法利用这一特性以避免重新检查先前匹配的字符。</p>
+<p>以下示例是在 <code>s</code> 中寻找 <code>p</code></p>
+<p>样例：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><code>p</code></th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">b</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">b</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">b</th>
+<th style="text-align:center">c</th>
+<th style="text-align:center">a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>idx</code></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">PMT</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>next</code></td>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>PMT (Partial Match Table) 部分匹配表，是指字符串的前缀集合与后缀集合的交集中最长元素的长度</p>
+<p>比如 ababab 的所有前缀集合和后缀集合中交集最长元素是 前四个 &ldquo;abab&rdquo; 和后四个 &ldquo;abab&rdquo;，所以 <code>idx</code> 为 5 的 &lsquo;b&rsquo; 的 PMT 为 4</p>
+<p><code>next</code> 数组是指，当当前 <code>pattern</code> 指针指向的值失配时，需要将当前指针指向对应索引的值继续匹配</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_next</span>(p: str) <span style="color:#f92672">-&gt;</span> list:
+    next <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> len(p)
+    next[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    i, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> len(p) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">if</span> j <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">or</span> p[i] <span style="color:#f92672">==</span> p[j]:
+            i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+            j <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+            next[i] <span style="color:#f92672">=</span> j
+        <span style="color:#66d9ef">else</span>:
+            j <span style="color:#f92672">=</span> next[j]
+    <span style="color:#66d9ef">return</span> next
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">kmp</span>(s: str, p: str) <span style="color:#f92672">-&gt;</span> int:
+    i, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
+    next <span style="color:#f92672">=</span> get_next(p)
+    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> len(s) <span style="color:#f92672">and</span> j <span style="color:#f92672">&lt;</span> len(p):
+        <span style="color:#75715e"># print(i, s[i], j, p[j])</span>
+        <span style="color:#66d9ef">if</span> j <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">or</span> s[i] <span style="color:#f92672">==</span> p[j]:
+            i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+            j <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">else</span>:
+            j <span style="color:#f92672">=</span> next[j]  <span style="color:#75715e"># 失配，调转去 next 里指向的值继续匹配</span>
+    <span style="color:#66d9ef">if</span> j <span style="color:#f92672">==</span> len(p):  <span style="color:#75715e"># 匹配成功</span>
+        <span style="color:#66d9ef">return</span> i <span style="color:#f92672">-</span> j
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thecommandbook-clox-nu" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

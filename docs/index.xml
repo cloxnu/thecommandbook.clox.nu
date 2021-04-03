@@ -7,6 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn-zh</language><atom:link href="https://thecommandbook.clox.nu/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>KMP 算法</title>
+      <link>https://thecommandbook.clox.nu/docs/algorithm/kmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/algorithm/kmp/</guid>
+      <description>KMP 算法 #  Knuth-Morris-Pratt 字符串查找算法 （简称为 KMP 算法）可在一个字符串 S 内查找一个词 W 的出现位置。一个词在不匹配时本身就包含足够的信息来确定下一个匹配可能的开始位置，此算法利用这一特性以避免重新检查先前匹配的字符。
+以下示例是在 s 中寻找 p
+样例：
+   p a b a b a b c a     idx 0 1 2 3 4 5 6 7   PMT 0 0 1 2 3 4 0 1   next -1 0 0 1 2 3 4 0    PMT (Partial Match Table) 部分匹配表，是指字符串的前缀集合与后缀集合的交集中最长元素的长度</description>
+    </item>
+    
+    <item>
       <title>二叉树</title>
       <link>https://thecommandbook.clox.nu/docs/algorithm/binary-tree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
