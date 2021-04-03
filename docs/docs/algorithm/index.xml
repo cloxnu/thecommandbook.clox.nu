@@ -20,6 +20,22 @@ class TreeNode: def __init__(self, value, left=None, right=None): self.value = v
     </item>
     
     <item>
+      <title>单调栈</title>
+      <link>https://thecommandbook.clox.nu/docs/algorithm/mono-stack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/algorithm/mono-stack/</guid>
+      <description>单调栈 #  为什么要用单调栈？单调栈的作用是什么？
+单调栈能在   \(O(n)\)  时间内找到一个 list 中所有值左边第一次比它大/小的元素和右边第一个比它大/小的元素
+举个例子，[2, 3, 4, 7, 8, 6, 0, 1] 中 &amp;ldquo;2&amp;rdquo; 右边第一个比它小的元素是 &amp;ldquo;0&amp;rdquo;, &amp;ldquo;6&amp;rdquo; 右边第一个比它小的元素是 &amp;ldquo;0&amp;rdquo; 左边第一个比它小的元素是 &amp;ldquo;4&amp;rdquo;
+以下 left right 数组存的是左边比当前元素大/小的元素的下标，右边比当前元素大/小的元素的下标
+若要求左右边比原数小的值，则用单调递增栈，得到的 left right 数组是 (-1 代表左边没有更小的了，8 代表右边没有更小的了)
+left = [-1, 0, 1, 2, 3, 2, -1, 6]；right = [6, 6, 6, 5, 5, 6, 8, 8]
+若要求左右边比原数大的值，则用单调递减栈，得到的 left right 数组是 (-1 代表左边没有更大的了，8 代表右边没有更大的了)
+left = [-1, -1, -1, -1, -1, 4, 5, 5]；right = [1, 2, 3, 4, 8, 8, 7, 8]</description>
+    </item>
+    
+    <item>
       <title>排序</title>
       <link>https://thecommandbook.clox.nu/docs/algorithm/sorting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

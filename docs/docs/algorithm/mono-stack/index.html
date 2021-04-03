@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="单调栈 #  为什么要用单调栈？单调栈的作用是什么？
+单调栈能在   \(O(n)\)  时间内找到一个 list 中所有值左边第一次比它大/小的元素和右边第一个比它大/小的元素
+举个例子，[2, 3, 4, 7, 8, 6, 0, 1] 中 &ldquo;2&rdquo; 右边第一个比它小的元素是 &ldquo;0&rdquo;, &ldquo;6&rdquo; 右边第一个比它小的元素是 &ldquo;0&rdquo; 左边第一个比它小的元素是 &ldquo;4&rdquo;
+以下 left right 数组存的是左边比当前元素大/小的元素的下标，右边比当前元素大/小的元素的下标
+若要求左右边比原数小的值，则用单调递增栈，得到的 left right 数组是 (-1 代表左边没有更小的了，8 代表右边没有更小的了)
+left = [-1, 0, 1, 2, 3, 2, -1, 6]；right = [6, 6, 6, 5, 5, 6, 8, 8]
+若要求左右边比原数大的值，则用单调递减栈，得到的 left right 数组是 (-1 代表左边没有更大的了，8 代表右边没有更大的了)
+left = [-1, -1, -1, -1, -1, 4, 5, 5]；right = [1, 2, 3, 4, 8, 8, 7, 8]">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="单调栈" />
+<meta property="og:description" content="单调栈 #  为什么要用单调栈？单调栈的作用是什么？
+单调栈能在   \(O(n)\)  时间内找到一个 list 中所有值左边第一次比它大/小的元素和右边第一个比它大/小的元素
+举个例子，[2, 3, 4, 7, 8, 6, 0, 1] 中 &ldquo;2&rdquo; 右边第一个比它小的元素是 &ldquo;0&rdquo;, &ldquo;6&rdquo; 右边第一个比它小的元素是 &ldquo;0&rdquo; 左边第一个比它小的元素是 &ldquo;4&rdquo;
+以下 left right 数组存的是左边比当前元素大/小的元素的下标，右边比当前元素大/小的元素的下标
+若要求左右边比原数小的值，则用单调递增栈，得到的 left right 数组是 (-1 代表左边没有更小的了，8 代表右边没有更小的了)
+left = [-1, 0, 1, 2, 3, 2, -1, 6]；right = [6, 6, 6, 5, 5, 6, 8, 8]
+若要求左右边比原数大的值，则用单调递减栈，得到的 left right 数组是 (-1 代表左边没有更大的了，8 代表右边没有更大的了)
+left = [-1, -1, -1, -1, -1, 4, 5, 5]；right = [1, 2, 3, 4, 8, 8, 7, 8]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thecommandbook.clox.nu/docs/algorithm/mono-stack/" />
+
+<title>单调栈 | The Command Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
+<script defer src="/en.search.min.ed7bc9c0602a4f03c69b52254b0687c3d34b6e5de5f69234b67815b56f7a9828.js" integrity="sha256-7XvJwGAqTwPGm1IlSwaHw9NLbl3l9pI0tngVtW96mCg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>The Command Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><a href="/docs/algorithm/"><strong>算法</strong></a>
+<ul>
+<li><a href="/docs/algorithm/binary-tree/">二叉树</a></li>
+<li><a href="/docs/algorithm/sorting/">排序</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://clox.nu/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>单调栈</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="单调栈">
+  单调栈
+  <a class="anchor" href="#%e5%8d%95%e8%b0%83%e6%a0%88">#</a>
+</h1>
+<p><strong>为什么要用单调栈？单调栈的作用是什么？</strong></p>
+<p>单调栈能在 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(O(n)\)
+</span>
+ 时间内找到一个 list 中所有值左边第一次比它大/小的元素和右边第一个比它大/小的元素</p>
+<p>举个例子，[2, 3, 4, 7, 8, 6, 0, 1] 中 &ldquo;2&rdquo; 右边第一个比它小的元素是 &ldquo;0&rdquo;, &ldquo;6&rdquo; 右边第一个比它小的元素是 &ldquo;0&rdquo; 左边第一个比它小的元素是 &ldquo;4&rdquo;</p>
+<p>以下 left right 数组存的是左边比当前元素大/小的元素的下标，右边比当前元素大/小的元素的下标</p>
+<p>若要求左右边比原数小的值，则用单调递增栈，得到的 left right 数组是 (-1 代表左边没有更小的了，8 代表右边没有更小的了)</p>
+<p>left = [-1, 0, 1, 2, 3, 2, -1, 6]；right = [6, 6, 6, 5, 5, 6, 8, 8]</p>
+<p>若要求左右边比原数大的值，则用单调递减栈，得到的 left right 数组是 (-1 代表左边没有更大的了，8 代表右边没有更大的了)</p>
+<p>left = [-1, -1, -1, -1, -1, 4, 5, 5]；right = [1, 2, 3, 4, 8, 8, 7, 8]</p>
+<p>它们的应用在这里</p>
+<p><a href="https://leetcode-cn.com/problems/trapping-rain-water">42. 接雨水</a></p>
+<p><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram">84. 柱状图中最大的矩形</a></p>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-mono-stack" id="tabs-mono-stack-0" checked="checked" />
+  <label for="tabs-mono-stack-0">单调递增栈</label>
+  <div class="book-tabs-content markdown-inner"><p>单调递增栈：找左右比当前元素小的元素</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mono_increasing_stack</span>(nums: list) <span style="color:#f92672">-&gt;</span> (list, list):
+    stack <span style="color:#f92672">=</span> []
+    left, right <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> len(nums), [len(nums)] <span style="color:#f92672">*</span> len(nums)  <span style="color:#75715e"># 默认左边全为 -1，右边全为 8</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(nums)):
+        <span style="color:#66d9ef">while</span> stack <span style="color:#f92672">and</span> nums[stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">&gt;</span> nums[i]:  <span style="color:#75715e"># 当当前元素非递增了，就 pop 栈顶元素</span>
+            top <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+            right[top] <span style="color:#f92672">=</span> i  <span style="color:#75715e"># 当前元素把 top 弹出来了，说明当前元素是 top 右边第一个比它小的元素</span>
+        left[i] <span style="color:#f92672">=</span> stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> stack <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 当前左边第一个比它小的元素就是栈里剩下它弹不了的元素了，如果栈空了，那左边就没有更小的了</span>
+        stack<span style="color:#f92672">.</span>append(i)
+    <span style="color:#66d9ef">return</span> left, right
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-mono-stack" id="tabs-mono-stack-1"  />
+  <label for="tabs-mono-stack-1">单调递减栈</label>
+  <div class="book-tabs-content markdown-inner"><p>单调递减栈：找左右比当前元素大的元素</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mono_decreasing_stack</span>(nums: list) <span style="color:#f92672">-&gt;</span> (list, list):
+    stack <span style="color:#f92672">=</span> []
+    left, right <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> len(nums), [len(nums)] <span style="color:#f92672">*</span> len(nums)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(nums)):
+        <span style="color:#66d9ef">while</span> stack <span style="color:#f92672">and</span> nums[stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">&lt;</span> nums[i]:
+            top <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+            right[top] <span style="color:#f92672">=</span> i
+        left[i] <span style="color:#f92672">=</span> stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> stack <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        stack<span style="color:#f92672">.</span>append(i)
+    <span style="color:#66d9ef">return</span> left, right
+</code></pre></div></div></div>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thecommandbook-clox-nu" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
