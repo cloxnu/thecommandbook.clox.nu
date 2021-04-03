@@ -6,10 +6,9 @@ title: 并查集
 
 实现「加权规则」和「折叠规则」
 
-使用并查集，轻松秒掉
-[200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+使用并查集，轻松秒掉 [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
 
-本算法时间复杂度为 {{< katex >}}O(n \alpha(n)){{< /katex >}}. {{< katex >}}\alpha(n){{< \katex >}} 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 {{< katex >}}\alpha(n){{< /katex >}} 的值不会超过 5，因此也可以看成是常数时间复杂度。
+本算法时间复杂度为 {{< katex >}}O(n \alpha(n)){{< /katex >}}. {{< katex >}}\alpha(n){{< /katex >}} 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 {{< katex >}}\alpha(n){{< /katex >}} 的值不会超过 5，因此也可以看成是常数时间复杂度。
 
 ```python
 class UnionFind:
