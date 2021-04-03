@@ -58,6 +58,19 @@ left = [-1, -1, -1, -1, -1, 4, 5, 5]；right = [1, 2, 3, 4, 8, 8, 7, 8]</descrip
     </item>
     
     <item>
+      <title>背包问题</title>
+      <link>https://thecommandbook.clox.nu/docs/algorithm/knapsack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/algorithm/knapsack/</guid>
+      <description>背包问题 #  背包问题 是一种组合优化的NP完全问题。问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。
+0-1 背包 #  0-1 背包
+有 n 个物品，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？
+假设物品数 n = 3；costs = [1, 2, 5]；values = [3, 7, 15]；space = 7
+   j \ dp[j] \ space 0 1 2 3 4 5 6 7     init 0 0 0 0 0 0 0 0   1 0 3 3 3 3 3 3 3   1+2 0 3 7 10 10 10 10 10   1+2+3 0 3 7 10 10 15 18 22    def zero_one_back(n: int, costs: list, values: list, space: int): dp = [0] * (space + 1) for i in range(n): # 0-1 背包问题中，这两层循环不可以交换 for j in reversed(range(space + 1)): if j &amp;lt; costs[i]: break # 这里因为 j 是有序的（越来越小），所以可以用 break，否则用 continue dp[j] = max(dp[j], dp[j - costs[i]] + values[i]) return dp[space] 完全背包 #  有 n 个物品，物品的数量无限，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？</description>
+    </item>
+    
+    <item>
       <title>链表</title>
       <link>https://thecommandbook.clox.nu/docs/algorithm/linked-list/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

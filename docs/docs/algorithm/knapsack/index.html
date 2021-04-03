@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="背包问题 #  背包问题 是一种组合优化的NP完全问题。问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。
+0-1 背包 #  0-1 背包
+有 n 个物品，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？
+假设物品数 n = 3；costs = [1, 2, 5]；values = [3, 7, 15]；space = 7
+   j \ dp[j] \ space 0 1 2 3 4 5 6 7     init 0 0 0 0 0 0 0 0   1 0 3 3 3 3 3 3 3   1&#43;2 0 3 7 10 10 10 10 10   1&#43;2&#43;3 0 3 7 10 10 15 18 22    def zero_one_back(n: int, costs: list, values: list, space: int): dp = [0] * (space &#43; 1) for i in range(n): # 0-1 背包问题中，这两层循环不可以交换 for j in reversed(range(space &#43; 1)): if j &lt; costs[i]: break # 这里因为 j 是有序的（越来越小），所以可以用 break，否则用 continue dp[j] = max(dp[j], dp[j - costs[i]] &#43; values[i]) return dp[space] 完全背包 #  有 n 个物品，物品的数量无限，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="背包问题" />
+<meta property="og:description" content="背包问题 #  背包问题 是一种组合优化的NP完全问题。问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。
+0-1 背包 #  0-1 背包
+有 n 个物品，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？
+假设物品数 n = 3；costs = [1, 2, 5]；values = [3, 7, 15]；space = 7
+   j \ dp[j] \ space 0 1 2 3 4 5 6 7     init 0 0 0 0 0 0 0 0   1 0 3 3 3 3 3 3 3   1&#43;2 0 3 7 10 10 10 10 10   1&#43;2&#43;3 0 3 7 10 10 15 18 22    def zero_one_back(n: int, costs: list, values: list, space: int): dp = [0] * (space &#43; 1) for i in range(n): # 0-1 背包问题中，这两层循环不可以交换 for j in reversed(range(space &#43; 1)): if j &lt; costs[i]: break # 这里因为 j 是有序的（越来越小），所以可以用 break，否则用 continue dp[j] = max(dp[j], dp[j - costs[i]] &#43; values[i]) return dp[space] 完全背包 #  有 n 个物品，物品的数量无限，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thecommandbook.clox.nu/docs/algorithm/knapsack/" />
+
+<title>背包问题 | The Command Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
+<script defer src="/en.search.min.68789b450521d873391c74c9006b589c0022fa106cc968647ad3870168f3f18e.js" integrity="sha256-aHibRQUh2HM5HHTJAGtYnAAi&#43;hBsyWhketOHAWjz8Y4="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>The Command Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><a href="/docs/algorithm/"><strong>算法</strong></a>
+<ul>
+<li><a href="/docs/algorithm/binary-tree/">二叉树</a></li>
+<li><a href="/docs/algorithm/sorting/">排序</a></li>
+<li><a href="/docs/algorithm/mono-stack/">单调栈</a></li>
+<li><a href="/docs/algorithm/linked-list/">链表</a></li>
+<li><a href="/docs/algorithm/union-find/">并查集</a></li>
+<li><a href="/docs/algorithm/knapsack/"class=active>背包问题</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://clox.nu/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>背包问题</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-1-背包">0-1 背包</a></li>
+    <li><a href="#完全背包">完全背包</a></li>
+    <li><a href="#装满-0-1-背包">装满 0-1 背包</a></li>
+    <li><a href="#装满完全背包">装满完全背包</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="背包问题">
+  背包问题
+  <a class="anchor" href="#%e8%83%8c%e5%8c%85%e9%97%ae%e9%a2%98">#</a>
+</h1>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98">背包问题</a> 是一种组合优化的NP完全问题。问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。</p>
+<h2 id="0-1-背包">
+  0-1 背包
+  <a class="anchor" href="#0-1-%e8%83%8c%e5%8c%85">#</a>
+</h2>
+<p>0-1 背包</p>
+<p>有 n 个物品，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？</p>
+<p>假设物品数 n = 3；costs = [1, 2, 5]；values = [3, 7, 15]；space = 7</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">j \ dp[j] \ space</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">init</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2+3</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">22</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">zero_one_back</span>(n: int, costs: list, values: list, space: int):
+    dp <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):  <span style="color:#75715e"># 0-1 背包问题中，这两层循环不可以交换</span>
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> reversed(range(space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)):
+            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> costs[i]:
+                <span style="color:#66d9ef">break</span>  <span style="color:#75715e"># 这里因为 j 是有序的（越来越小），所以可以用 break，否则用 continue</span>
+            dp[j] <span style="color:#f92672">=</span> max(dp[j], dp[j <span style="color:#f92672">-</span> costs[i]] <span style="color:#f92672">+</span> values[i])
+
+    <span style="color:#66d9ef">return</span> dp[space]
+</code></pre></div><h2 id="完全背包">
+  完全背包
+  <a class="anchor" href="#%e5%ae%8c%e5%85%a8%e8%83%8c%e5%8c%85">#</a>
+</h2>
+<p>有 n 个物品，物品的数量无限，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？</p>
+<p>假设物品数 n = 3；costs = [1, 2, 5]；values = [3, 7, 15]；space = 7</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">j \ dp[j] \ space</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">init</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">21</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">24</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2+3</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">24</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">complete_back</span>(n: int, costs: list, values: list, space: int):
+    dp <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):  <span style="color:#75715e"># 完全背包问题中，这两层循环可以交换</span>
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> costs[i]:
+                <span style="color:#66d9ef">continue</span>  <span style="color:#75715e"># 这里是 continue</span>
+            dp[j] <span style="color:#f92672">=</span> max(dp[j], dp[j <span style="color:#f92672">-</span> costs[i]] <span style="color:#f92672">+</span> values[i])
+        <span style="color:#66d9ef">print</span>(dp)
+
+    <span style="color:#66d9ef">return</span> dp[space]
+</code></pre></div><h2 id="装满-0-1-背包">
+  装满 0-1 背包
+  <a class="anchor" href="#%e8%a3%85%e6%bb%a1-0-1-%e8%83%8c%e5%8c%85">#</a>
+</h2>
+<p>有 n 个物品，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最 <strong>小</strong> 价值（要求背包必须装满）？</p>
+<p>思路：初始化时将除 0 以外的数定义为 &lsquo;inf&rsquo;，代表背包无法装到这个容量，若题目改为最大，则初始化为 &lsquo;-inf&rsquo;，并将 min 改为 max 即可</p>
+<p>假设物品数 n = 4；costs = [2, 3, 5, 7]；values = [3, 5, 7, 9]；space = 10</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">j \ dp[j] \ space</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">init</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2+3</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2+3+4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">14</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filled_zero_one_back</span>(n: int, costs: list, values: list, space: int):
+    dp <span style="color:#f92672">=</span> [float(<span style="color:#e6db74">&#39;inf&#39;</span>)] <span style="color:#f92672">*</span> (space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):  <span style="color:#75715e"># 0-1 背包问题中，这两层循环不可以交换</span>
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> reversed(range(space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)):
+            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> costs[i]:
+                <span style="color:#66d9ef">break</span>  <span style="color:#75715e"># 这里因为 j 是有序的（越来越小），所以可以用 break，否则用 continue</span>
+            dp[j] <span style="color:#f92672">=</span> min(dp[j], dp[j <span style="color:#f92672">-</span> costs[i]] <span style="color:#f92672">+</span> values[i])
+        <span style="color:#66d9ef">print</span>(dp)
+
+    <span style="color:#66d9ef">return</span> dp[space]
+</code></pre></div><h2 id="装满完全背包">
+  装满完全背包
+  <a class="anchor" href="#%e8%a3%85%e6%bb%a1%e5%ae%8c%e5%85%a8%e8%83%8c%e5%8c%85">#</a>
+</h2>
+<p>有 n 个物品，物品的数量无限，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最 <strong>小</strong> 价值（要求背包必须装满）？</p>
+<p>思路：初始化时将除 0 以外的数定义为 &lsquo;inf&rsquo;，代表背包无法装到这个容量，若题目改为最大，则初始化为 &lsquo;-inf&rsquo;，并将 min 改为 max 即可</p>
+<p>假设物品数 n = 4；costs = [2, 3, 5, 7]；values = [3, 5, 7, 9]；space = 10</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">j \ dp[j] \ space</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">init</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">inf</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2(1)</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2(2)</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2+3</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">1+2+3+4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">inf</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">14</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filled_complete_back</span>(n: int, costs: list, values: list, space: int):
+    dp <span style="color:#f92672">=</span> [float(<span style="color:#e6db74">&#39;inf&#39;</span>)] <span style="color:#f92672">*</span> (space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):  <span style="color:#75715e"># 完全背包问题中，这两层循环可以交换</span>
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(space <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> costs[i]:
+                <span style="color:#66d9ef">continue</span>  <span style="color:#75715e"># 这里是 continue</span>
+            dp[j] <span style="color:#f92672">=</span> min(dp[j], dp[j <span style="color:#f92672">-</span> costs[i]] <span style="color:#f92672">+</span> values[i])
+        <span style="color:#66d9ef">print</span>(dp)
+
+    <span style="color:#66d9ef">return</span> dp[space]
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thecommandbook-clox-nu" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-1-背包">0-1 背包</a></li>
+    <li><a href="#完全背包">完全背包</a></li>
+    <li><a href="#装满-0-1-背包">装满 0-1 背包</a></li>
+    <li><a href="#装满完全背包">装满完全背包</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
