@@ -8,12 +8,14 @@
 <meta name="description" content="并查集 | 维基百科
 实现「加权规则」和「折叠规则」
 使用并查集，轻松秒掉 200. 岛屿数量
-本算法时间复杂度为   \(O(n \alpha(n))\)  .  \(\alpha(n)&lt;span&gt; \( 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 &amp;lt;span&amp;gt; \(\alpha(n)\) &amp;lt;/span&amp;gt; 的值不会超过 5，因此也可以看成是常数时间复杂度。 ```python class UnionFind: def __init__(self, all_data: list): &amp;#34;&amp;#34;&amp;#34; 初始化并查集 :param all_data: 数据列表 &amp;#34;&amp;#34;&amp;#34; self.parent = {} self.size = {} self.union_num = 0 for data in all_data: self.parent[data] = data # 初始父亲结点为自己 self.size[data] = 1 self.union_num &amp;#43;= 1 def __repr__(self): return &amp;#34;parent: {}\nsize: {}\nunion_num: {}\n&amp;#34;.format(self.parent, self.size, self.">
+本算法时间复杂度为   \(O(n \alpha(n))\)  .  \(\alpha(n)\)  是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数  \(\alpha(n)\)  的值不会超过 5，因此也可以看成是常数时间复杂度。
+class UnionFind: def __init__(self, all_data: list): &#34;&#34;&#34; 初始化并查集 :param all_data: 数据列表 &#34;&#34;&#34; self.parent = {} self.size = {} self.union_num = 0 for data in all_data: self.parent[data] = data # 初始父亲结点为自己 self.size[data] = 1 self.union_num &#43;= 1 def __repr__(self): return &#34;parent: {}\nsize: {}\nunion_num: {}\n&#34;.format(self.parent, self.size, self.union_num) def add(self, *will_add_data): for data in will_add_data: if data not in self.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="并查集" />
 <meta property="og:description" content="并查集 | 维基百科
 实现「加权规则」和「折叠规则」
 使用并查集，轻松秒掉 200. 岛屿数量
-本算法时间复杂度为   \(O(n \alpha(n))\)  .  \(\alpha(n)&lt;span&gt; \( 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 &amp;lt;span&amp;gt; \(\alpha(n)\) &amp;lt;/span&amp;gt; 的值不会超过 5，因此也可以看成是常数时间复杂度。 ```python class UnionFind: def __init__(self, all_data: list): &amp;#34;&amp;#34;&amp;#34; 初始化并查集 :param all_data: 数据列表 &amp;#34;&amp;#34;&amp;#34; self.parent = {} self.size = {} self.union_num = 0 for data in all_data: self.parent[data] = data # 初始父亲结点为自己 self.size[data] = 1 self.union_num &amp;#43;= 1 def __repr__(self): return &amp;#34;parent: {}\nsize: {}\nunion_num: {}\n&amp;#34;.format(self.parent, self.size, self." />
+本算法时间复杂度为   \(O(n \alpha(n))\)  .  \(\alpha(n)\)  是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数  \(\alpha(n)\)  的值不会超过 5，因此也可以看成是常数时间复杂度。
+class UnionFind: def __init__(self, all_data: list): &#34;&#34;&#34; 初始化并查集 :param all_data: 数据列表 &#34;&#34;&#34; self.parent = {} self.size = {} self.union_num = 0 for data in all_data: self.parent[data] = data # 初始父亲结点为自己 self.size[data] = 1 self.union_num &#43;= 1 def __repr__(self): return &#34;parent: {}\nsize: {}\nunion_num: {}\n&#34;.format(self.parent, self.size, self.union_num) def add(self, *will_add_data): for data in will_add_data: if data not in self." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thecommandbook.clox.nu/docs/algorithm/union-find/" />
 
@@ -21,7 +23,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
-<script defer src="/en.search.min.68789b450521d873391c74c9006b589c0022fa106cc968647ad3870168f3f18e.js" integrity="sha256-aHibRQUh2HM5HHTJAGtYnAAi&#43;hBsyWhketOHAWjz8Y4="></script>
+<script defer src="/en.search.min.0df82e5de97d42f7a316830b7b67d264ed1501ceb778159513d0611428852126.js" integrity="sha256-DfguXel9QvejFoMLe2fSZO0VAc63eBWVE9BhFCiFISY="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -141,8 +143,7 @@ https://github.com/alex-shpak/hugo-book
       
   <article class="markdown"><p><a href="https://ds.an.dog/content/V.%E6%A0%91/5.10-%E9%9B%86%E5%90%88%E8%A1%A8%E7%A4%BA.html">并查集</a> | <a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E6%9F%A5%E9%9B%86">维基百科</a></p>
 <p>实现「加权规则」和「折叠规则」</p>
-<p>使用并查集，轻松秒掉
-<a href="https://leetcode-cn.com/problems/number-of-islands/">200. 岛屿数量</a></p>
+<p>使用并查集，轻松秒掉 <a href="https://leetcode-cn.com/problems/number-of-islands/">200. 岛屿数量</a></p>
 <p>本算法时间复杂度为 
 <link rel="stylesheet" href="/katex/katex.min.css" />
 <script defer src="/katex/katex.min.js"></script>
@@ -150,82 +151,77 @@ https://github.com/alex-shpak/hugo-book
   \(O(n \alpha(n))\)
 </span>
 . <span>
-  \(\alpha(n)&lt;span&gt;
-  \( 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 &amp;lt;span&amp;gt;
   \(\alpha(n)\)
-&amp;lt;/span&amp;gt;
- 的值不会超过 5，因此也可以看成是常数时间复杂度。
-
-```python
-class UnionFind:
-    def __init__(self, all_data: list):
-        &amp;#34;&amp;#34;&amp;#34;
-        初始化并查集
-        :param all_data: 数据列表
-        &amp;#34;&amp;#34;&amp;#34;
-        self.parent = {}
-        self.size = {}
-        self.union_num = 0
-
-        for data in all_data:
-            self.parent[data] = data  # 初始父亲结点为自己
-            self.size[data] = 1
-            self.union_num &amp;#43;= 1
-
-    def __repr__(self):
-        return &amp;#34;parent: {}\nsize: {}\nunion_num: {}\n&amp;#34;.format(self.parent, self.size, self.union_num)
-
-    def add(self, *will_add_data):
-        for data in will_add_data:
-            if data not in self.parent:
-                self.parent[data] = data
-                self.size[data] = 1
-                self.union_num &amp;#43;= 1
-
-    def find(self, data):
-        &amp;#34;&amp;#34;&amp;#34;
-        查找 data 属于哪个集合，返回 root
-        :param data: 要查询的值
-        :return: data 属于的集合的 root
-        &amp;#34;&amp;#34;&amp;#34;
-        if data not in self.parent:
-            return None
-        node = data  # 防止引用类型的 data 被改变
-        nodes = []  # 将路上的 node 全部记下来
-        while self.parent[node] != node:
-            nodes.append(node)
-            node = self.parent[node]
-        for n in nodes:  # 将路上的 node 的父结点全部指向根结点以满足「折叠规则」
-            self.parent[n] = node
-            self.size[n] = 1
-        return node
-
-    def union(self, *will_union_data):
-        &amp;#34;&amp;#34;&amp;#34;
-        合并多个值，当值不存在时跳过
-        :param will_union_data: 要合并的值
-        &amp;#34;&amp;#34;&amp;#34;
-        root1 = None  # 第一个要合并集合的 root
-        for data in will_union_data:
-            root2 = self.find(data)
-            if root1 is None:
-                root1 = root2  # 将 will_union_data 中第一个 data 的 root 赋值给 root1
-            if root2 is None or root1 == root2:
-                continue
-            # size 小的集合合并到 size 大的集合
-            if self.size[root1] &amp;gt;= self.size[root2]:
-                self.parent[root2] = root1
-                self.size[root1] &amp;#43;= self.size[root2]
-            else:
-                self.parent[root1] = root2
-                self.size[root2] &amp;#43;= self.size[root1]
-                root1 = root2  # 更新 root1 为新的 root
-            self.union_num -= 1
-```\)
-&lt;/span&gt;\)
 </span>
-</p>
-</article>
+ 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 <span>
+  \(\alpha(n)\)
+</span>
+ 的值不会超过 5，因此也可以看成是常数时间复杂度。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UnionFind</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, all_data: list):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        初始化并查集
+</span><span style="color:#e6db74">        :param all_data: 数据列表
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>parent <span style="color:#f92672">=</span> {}
+        self<span style="color:#f92672">.</span>size <span style="color:#f92672">=</span> {}
+        self<span style="color:#f92672">.</span>union_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+        <span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> all_data:
+            self<span style="color:#f92672">.</span>parent[data] <span style="color:#f92672">=</span> data  <span style="color:#75715e"># 初始父亲结点为自己</span>
+            self<span style="color:#f92672">.</span>size[data] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+            self<span style="color:#f92672">.</span>union_num <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+    <span style="color:#66d9ef">def</span> __repr__(self):
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;parent: {}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">size: {}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">union_num: {}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(self<span style="color:#f92672">.</span>parent, self<span style="color:#f92672">.</span>size, self<span style="color:#f92672">.</span>union_num)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(self, <span style="color:#f92672">*</span>will_add_data):
+        <span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> will_add_data:
+            <span style="color:#66d9ef">if</span> data <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>parent:
+                self<span style="color:#f92672">.</span>parent[data] <span style="color:#f92672">=</span> data
+                self<span style="color:#f92672">.</span>size[data] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                self<span style="color:#f92672">.</span>union_num <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find</span>(self, data):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        查找 data 属于哪个集合，返回 root
+</span><span style="color:#e6db74">        :param data: 要查询的值
+</span><span style="color:#e6db74">        :return: data 属于的集合的 root
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">if</span> data <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>parent:
+            <span style="color:#66d9ef">return</span> None
+        node <span style="color:#f92672">=</span> data  <span style="color:#75715e"># 防止引用类型的 data 被改变</span>
+        nodes <span style="color:#f92672">=</span> []  <span style="color:#75715e"># 将路上的 node 全部记下来</span>
+        <span style="color:#66d9ef">while</span> self<span style="color:#f92672">.</span>parent[node] <span style="color:#f92672">!=</span> node:
+            nodes<span style="color:#f92672">.</span>append(node)
+            node <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>parent[node]
+        <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> nodes:  <span style="color:#75715e"># 将路上的 node 的父结点全部指向根结点以满足「折叠规则」</span>
+            self<span style="color:#f92672">.</span>parent[n] <span style="color:#f92672">=</span> node
+            self<span style="color:#f92672">.</span>size[n] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">return</span> node
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">union</span>(self, <span style="color:#f92672">*</span>will_union_data):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        合并多个值，当值不存在时跳过
+</span><span style="color:#e6db74">        :param will_union_data: 要合并的值
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        root1 <span style="color:#f92672">=</span> None  <span style="color:#75715e"># 第一个要合并集合的 root</span>
+        <span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> will_union_data:
+            root2 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find(data)
+            <span style="color:#66d9ef">if</span> root1 <span style="color:#f92672">is</span> None:
+                root1 <span style="color:#f92672">=</span> root2  <span style="color:#75715e"># 将 will_union_data 中第一个 data 的 root 赋值给 root1</span>
+            <span style="color:#66d9ef">if</span> root2 <span style="color:#f92672">is</span> None <span style="color:#f92672">or</span> root1 <span style="color:#f92672">==</span> root2:
+                <span style="color:#66d9ef">continue</span>
+            <span style="color:#75715e"># size 小的集合合并到 size 大的集合</span>
+            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>size[root1] <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>size[root2]:
+                self<span style="color:#f92672">.</span>parent[root2] <span style="color:#f92672">=</span> root1
+                self<span style="color:#f92672">.</span>size[root1] <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>size[root2]
+            <span style="color:#66d9ef">else</span>:
+                self<span style="color:#f92672">.</span>parent[root1] <span style="color:#f92672">=</span> root2
+                self<span style="color:#f92672">.</span>size[root2] <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>size[root1]
+                root1 <span style="color:#f92672">=</span> root2  <span style="color:#75715e"># 更新 root1 为新的 root</span>
+            self<span style="color:#f92672">.</span>union_num <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</code></pre></div></article>
  
       
 
