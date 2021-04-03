@@ -9,3 +9,4 @@ headless: true
   - [链表]({{< relref "/docs/algorithm/linked-list" >}})
   - [并查集]({{< relref "/docs/algorithm/union-find" >}})
   - [背包问题]({{< relref "/docs/algorithm/knapsack" >}})
+  - [KMP 算法]({{< relref "/docs/algorithm/kmp" >}})
