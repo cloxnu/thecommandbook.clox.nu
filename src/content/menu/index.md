@@ -8,3 +8,4 @@ headless: true
   - [单调栈]({{< relref "/docs/algorithm/mono-stack" >}})
   - [链表]({{< relref "/docs/algorithm/linked-list" >}})
   - [并查集]({{< relref "/docs/algorithm/union-find" >}})
+  - [背包问题]({{< relref "/docs/algorithm/knapsack" >}})
