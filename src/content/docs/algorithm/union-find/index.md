@@ -2,6 +2,8 @@
 title: 并查集
 ---
 
+# 并查集
+
 [并查集](https://ds.an.dog/content/V.%E6%A0%91/5.10-%E9%9B%86%E5%90%88%E8%A1%A8%E7%A4%BA.html) | [维基百科](https://zh.wikipedia.org/wiki/%E5%B9%B6%E6%9F%A5%E9%9B%86)
 
 实现「加权规则」和「折叠规则」
