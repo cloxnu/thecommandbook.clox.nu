@@ -4,9 +4,11 @@ title: 排序
 
 # 排序
 
+[排序算法](https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95) 是一种能将一串资料依照特定排序方式进行排列的一种算法。
+
 ## 堆排序
 
-堆排序的平均和最差情况时间均为 {{< katex >}}O(n \log n){{< /katex >}}，空间为 {{< katex >}}O(1){{< /katex >}}
+[堆排序](https://zh.wikipedia.org/wiki/%E5%A0%86%E6%8E%92%E5%BA%8F) (Heapsort) 是指利用堆这种数据结构所设计的一种排序算法。堆排序的平均和最差情况时间均为 {{< katex >}}O(n \log n){{< /katex >}}，空间为 {{< katex >}}O(1){{< /katex >}}
 
 {{< tabs "heap-sort" >}}
 {{< tab "递归形式" >}}
@@ -63,7 +65,7 @@ def heap_sort_iter(nums: list) -> list:
 
 ## 归并排序
 
-归并排序的平均和最差情况时间均为 {{< katex >}}O(n \log n){{< /katex >}}，空间为 {{< katex >}}O(n){{< /katex >}}
+[归并排序](https://zh.wikipedia.org/wiki/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F) (Merge sort) 是创建在归并操作上的一种有效的排序算法。归并排序的平均和最差情况时间均为 {{< katex >}}O(n \log n){{< /katex >}}，空间为 {{< katex >}}O(n){{< /katex >}}
 
 类似二叉树的 **后序** 遍历，先 recur 左右，再 visit 自己，所以迭代采用树的后序遍历模板
 
@@ -122,7 +124,7 @@ def merge_sort_iter(nums: list) -> list:
 
 ## 快速排序
 
-此方法为原地快排，平均时间均为 {{< katex >}}O(n \log n){{< /katex >}}，最差情况 {{< katex >}}O(n^2){{< /katex >}}，空间为 {{< katex >}}O(1){{< /katex >}}
+[快速排序](https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F) (Quicksort)，又称分区交换排序 (partition-exchange sort)。此方法为原地快排，平均时间均为 {{< katex >}}O(n \log n){{< /katex >}}，最差情况 {{< katex >}}O(n^2){{< /katex >}}，空间为 {{< katex >}}O(1){{< /katex >}}
 
 类似二叉树的 **前序** 遍历，先 visit 自己，再 recur 左右，所以迭代用栈替代即可
 
