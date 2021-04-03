@@ -45,5 +45,18 @@ left = [-1, -1, -1, -1, -1, 4, 5, 5]；right = [1, 2, 3, 4, 8, 8, 7, 8]</descrip
 堆排序 #  堆排序 (Heapsort) 是指利用堆这种数据结构所设计的一种排序算法。堆排序的平均和最差情况时间均为   \(O(n \log n)\)  ，空间为  \(O(1)\)  递归形式 def heap_sort(nums: list) -&amp;gt; list: def adjust(heap: list, start, end): left = start * 2 + 1 right = left + 1 if left &amp;gt;= end: return max_child = right if right &amp;lt; end and heap[left] &amp;lt; heap[right] else left # 选取最大的子结点 if heap[start] &amp;lt; heap[max_child]: heap[start], heap[max_child] = heap[max_child], heap[start] adjust(heap, max_child, end) # 从最后一个结点的父结点开始建堆 for i in reversed(range(len(nums) // 2)): adjust(nums, i, len(nums)) # 将最大结点交换至最后并调整堆 for i in reversed(range(len(nums))): nums[0], nums[i] = nums[i], nums[0] adjust(nums, 0, i) return nums 迭代形式 def heap_sort_iter(nums: list) -&amp;gt; list: def adjust(heap: list, start, end): while start &amp;lt; end: left = start * 2 + 1 right = left + 1 if left &amp;gt;= end: break max_child = right if right &amp;lt; end and heap[left] &amp;lt; heap[right] else left # 选取最大的子结点 if heap[start] &amp;gt;= heap[max_child]: break heap[start], heap[max_child] = heap[max_child], heap[start] start = max_child # 从最后一个结点的父结点开始建堆 for i in reversed(range(len(nums) // 2)): adjust(nums, i, len(nums)) # 将最大结点交换至最后并调整堆 for i in reversed(range(len(nums))): nums[0], nums[i] = nums[i], nums[0] adjust(nums, 0, i) return nums  归并排序 #  归并排序 (Merge sort) 是创建在归并操作上的一种有效的排序算法。归并排序的平均和最差情况时间均为  \(O(n \log n)\)  ，空间为  \(O(n)\)  类似二叉树的 后序 遍历，先 recur 左右，再 visit 自己，所以迭代采用树的后序遍历模板</description>
     </item>
     
+    <item>
+      <title>链表</title>
+      <link>https://thecommandbook.clox.nu/docs/algorithm/linked-list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/algorithm/linked-list/</guid>
+      <description>链表 #  链表 (Linked list) 是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的指针 (Pointer)。链表的程序定义如下：
+class ListNode: def __init__(self, x, next=None): self.val = x self.next = next 1. 环形链表 #  检测链表中的环
+141. 环形链表
+1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 | | 7 &amp;lt;- 6 &amp;lt;- 5 快慢指针，相撞即有环
+def hasCycle(head: ListNode) -&amp;gt; bool: slow = fast = head while fast and fast.next: fast = fast.next.next slow = slow.next if fast == slow: return True return False 2.</description>
+    </item>
+    
   </channel>
 </rss>
