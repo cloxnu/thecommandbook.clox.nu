@@ -1,0 +1,51 @@
+/* You can add custom styles here. */
+
+// @import "plugins/numbered";
+// @import "plugins/scrollbars";
+
+/* roboto-300italic - latin */
+@font-face {
+  font-family: 'Recursive';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Recursive'),
+  url('fonts/Recursive.woff2') format('woff2');
+}
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Recursive'),
+  url('fonts/Recursive.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Recursive'),
+  url('fonts/Recursive.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+/* roboto-mono-regular - latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('JetBrains Mono'),
+  url('fonts/JetBrainsMono.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+body {
+  font-family: 'Recursive', sans-serif;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
