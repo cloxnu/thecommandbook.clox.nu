@@ -5,7 +5,7 @@
     <link>https://thecommandbook.clox.nu/</link>
     <description>Recent content in Introduction on The Command Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>cn-zh</language><atom:link href="https://thecommandbook.clox.nu/index.xml" rel="self" type="application/rss+xml" />
+    <language>cn</language><atom:link href="https://thecommandbook.clox.nu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>KMP 算法</title>
       <link>https://thecommandbook.clox.nu/docs/algorithm/kmp/</link>
