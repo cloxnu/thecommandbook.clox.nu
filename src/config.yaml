@@ -1,5 +1,6 @@
 baseURL: https://thecommandbook.clox.nu/
-languageCode: cn-zh
+languageCode: cn
+defaultContentLanguage: cn
 title: The Command Book
 theme: book
 
@@ -17,4 +18,5 @@ params:
   BookToc: true
   BookMenuBundle: /menu
   BookRepo: https://github.com/cloxnu/thecommandbook.clox.nu
+  BookEditPath: edit/main/src
   BookComments: true

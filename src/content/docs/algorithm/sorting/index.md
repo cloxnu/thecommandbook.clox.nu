@@ -124,7 +124,7 @@ def merge_sort_iter(nums: list) -> list:
 
 ## 快速排序
 
-[快速排序](https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F) (Quicksort)，又称分区交换排序 (partition-exchange sort)。此方法为原地快排，平均时间均为 {{< katex >}}O(n \log n){{< /katex >}}，最差情况 {{< katex >}}O(n^2){{< /katex >}}，空间为 {{< katex >}}O(1){{< /katex >}}
+[快速排序](https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F) (Quicksort)，又称分区交换排序 (partition-exchange sort)。此方法为原地快排，平均时间为 {{< katex >}}O(n \log n){{< /katex >}}，最差情况 {{< katex >}}O(n^2){{< /katex >}}，空间为 {{< katex >}}O(1){{< /katex >}}
 
 类似二叉树的 **前序** 遍历，先 visit 自己，再 recur 左右，所以迭代用栈替代即可
 
