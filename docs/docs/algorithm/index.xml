@@ -76,7 +76,7 @@ class UnionFind: def __init__(self, all_data: list): &amp;#34;&amp;#34;&amp;#34;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://thecommandbook.clox.nu/docs/algorithm/knapsack/</guid>
-      <description>背包问题 #  背包问题 是一种组合优化的NP完全问题。问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。
+      <description>背包问题 #  背包问题 是一种组合优化的 NP 完全问题。问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。
 0-1 背包 #  0-1 背包
 有 n 个物品，物品有两个属性，代价 cost，价值 value，背包在容量 space 的限制下可以装物品的最大价值？
 假设物品数 n = 3；costs = [1, 2, 5]；values = [3, 7, 15]；space = 7
