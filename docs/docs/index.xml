@@ -5,6 +5,6 @@
     <link>https://thecommandbook.clox.nu/docs/</link>
     <description>Recent content in Docs on The Command Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>cn-zh</language><atom:link href="https://thecommandbook.clox.nu/docs/index.xml" rel="self" type="application/rss+xml" />
+    <language>cn</language><atom:link href="https://thecommandbook.clox.nu/docs/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
