@@ -7,6 +7,11 @@ theme: book
 disqusShortname: thecommandbook-clox-nu
 publishdir: ../docs/
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 menu:
   after:
     - name: "关于我"
