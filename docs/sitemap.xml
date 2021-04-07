@@ -7,6 +7,10 @@
   </url>
   
   <url>
+    <loc>https://thecommandbook.clox.nu/docs/vim/</loc>
+  </url>
+  
+  <url>
     <loc>https://thecommandbook.clox.nu/categories/</loc>
   </url>
   
@@ -31,6 +35,10 @@
   </url>
   
   <url>
+    <loc>https://thecommandbook.clox.nu/docs/vim/get-started/</loc>
+  </url>
+  
+  <url>
     <loc>https://thecommandbook.clox.nu/docs/algorithm/mono-stack/</loc>
   </url>
   
@@ -40,6 +48,10 @@
   
   <url>
     <loc>https://thecommandbook.clox.nu/docs/algorithm/sorting/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thecommandbook.clox.nu/docs/vim/normal-mode/</loc>
   </url>
   
   <url>

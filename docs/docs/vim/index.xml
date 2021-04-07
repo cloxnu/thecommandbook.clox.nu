@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>一看就懂的 Vim 系列 on The Command Book</title>
+    <link>https://thecommandbook.clox.nu/docs/vim/</link>
+    <description>Recent content in 一看就懂的 Vim 系列 on The Command Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language><atom:link href="https://thecommandbook.clox.nu/docs/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从零开始 | 一看就懂的 Vim 系列</title>
+      <link>https://thecommandbook.clox.nu/docs/vim/get-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/vim/get-started/</guid>
+      <description>从零开始 #  作为例子，当前文件夹下有两个文件 test.txt 和 test2.txt。
+其中，文件 test.txt 中含有文本
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id dui faucibus, tincidunt arcu a, consectetur lectus. Quisque aliquet augue nec lacus suscipit, tempor rhoncus nunc dignissim. Cras quis tellus in nibh mollis volutpat et sit amet elit. Vivamus egestas finibus eleifend. Nunc ut quam dictum, feugiat erat non, ornare purus. Vestibulum sodales luctus lorem, eget condimentum dolor rhoncus suscipit. Aliquam ac pulvinar nunc.</description>
+    </item>
+    
+    <item>
+      <title>正常模式 | 一看就懂的 Vim 系列</title>
+      <link>https://thecommandbook.clox.nu/docs/vim/normal-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/vim/normal-mode/</guid>
+      <description>正常模式 #  打开文件 test.txt 后，界面如图
+在正常模式 (Normal Mode) 下（通常也叫命令模式 (Command Mode)），依次按照以下表格中的按键得出的结果如右图所示（为方便演示，命令行窗口将缩小展示），最左侧的演示步骤是指右图的结果是从上一步骤经此操作得出。
+ table th:first-of-type { width: 15%; } table th:nth-of-type(2) { width: 25%; } table th:nth-of-type(3) { width: 30%; } table th:nth-of-type(4) { width: 30%; }  光标的移动 #     按键 说明 从 到     j / ⬇ 向下移动光标     l / ➡ 向右移动光标     k / ⬆ 向上移动光标     h / ⬅ 向左移动光标     8l / 8➡ 命令前加数字可代表命令操作次数，此处代表向右移动光标 8 次     W / w 移动到下一个单词头     B / b 移动到上一个单词头 或     E / e 移动到下一个单词尾 或     ge 移动到上一个单词尾 或     Home / 0 移动到行首     End / $ 移动到行尾     ^ 移动到本行第一个不是空白字符的位置     g_ 移动到本行最后一个不是空白字符的位置      </description>
+    </item>
+    
+  </channel>
+</rss>

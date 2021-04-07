@@ -32,6 +32,17 @@ class TreeNode: def __init__(self, value, left=None, right=None): self.value = v
     </item>
     
     <item>
+      <title>从零开始 | 一看就懂的 Vim 系列</title>
+      <link>https://thecommandbook.clox.nu/docs/vim/get-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/vim/get-started/</guid>
+      <description>从零开始 #  作为例子，当前文件夹下有两个文件 test.txt 和 test2.txt。
+其中，文件 test.txt 中含有文本
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id dui faucibus, tincidunt arcu a, consectetur lectus. Quisque aliquet augue nec lacus suscipit, tempor rhoncus nunc dignissim. Cras quis tellus in nibh mollis volutpat et sit amet elit. Vivamus egestas finibus eleifend. Nunc ut quam dictum, feugiat erat non, ornare purus. Vestibulum sodales luctus lorem, eget condimentum dolor rhoncus suscipit. Aliquam ac pulvinar nunc.</description>
+    </item>
+    
+    <item>
       <title>单调栈</title>
       <link>https://thecommandbook.clox.nu/docs/algorithm/mono-stack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -68,6 +79,17 @@ class UnionFind: def __init__(self, all_data: list): &amp;#34;&amp;#34;&amp;#34;
       <guid>https://thecommandbook.clox.nu/docs/algorithm/sorting/</guid>
       <description>排序 #  排序算法 是一种能将一串资料依照特定排序方式进行排列的一种算法。
 堆排序 #  堆排序 (Heapsort) 是指利用堆这种数据结构所设计的一种排序算法。堆排序的平均和最差情况时间均为   \(O(n \log n)\)  ，空间为  \(O(1)\)  递归形式 def heap_sort(nums: list) -&amp;gt; list: def adjust(heap: list, start, end): left = start * 2 + 1 right = left + 1 if left &amp;gt;= end: return max_child = right if right &amp;lt; end and heap[left] &amp;lt; heap[right] else left # 选取最大的子结点 if heap[start] &amp;lt; heap[max_child]: heap[start], heap[max_child] = heap[max_child], heap[start] adjust(heap, max_child, end) # 从最后一个结点的父结点开始建堆 for i in reversed(range(len(nums) // 2)): adjust(nums, i, len(nums)) # 将最大结点交换至最后并调整堆 for i in reversed(range(len(nums))): nums[0], nums[i] = nums[i], nums[0] adjust(nums, 0, i) return nums 迭代形式 def heap_sort_iter(nums: list) -&amp;gt; list: def adjust(heap: list, start, end): while start &amp;lt; end: left = start * 2 + 1 right = left + 1 if left &amp;gt;= end: break max_child = right if right &amp;lt; end and heap[left] &amp;lt; heap[right] else left # 选取最大的子结点 if heap[start] &amp;gt;= heap[max_child]: break heap[start], heap[max_child] = heap[max_child], heap[start] start = max_child # 从最后一个结点的父结点开始建堆 for i in reversed(range(len(nums) // 2)): adjust(nums, i, len(nums)) # 将最大结点交换至最后并调整堆 for i in reversed(range(len(nums))): nums[0], nums[i] = nums[i], nums[0] adjust(nums, 0, i) return nums  归并排序 #  归并排序 (Merge sort) 是创建在归并操作上的一种有效的排序算法。归并排序的平均和最差情况时间均为  \(O(n \log n)\)  ，空间为  \(O(n)\)  类似二叉树的 后序 遍历，先 recur 左右，再 visit 自己，所以迭代采用树的后序遍历模板</description>
+    </item>
+    
+    <item>
+      <title>正常模式 | 一看就懂的 Vim 系列</title>
+      <link>https://thecommandbook.clox.nu/docs/vim/normal-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thecommandbook.clox.nu/docs/vim/normal-mode/</guid>
+      <description>正常模式 #  打开文件 test.txt 后，界面如图
+在正常模式 (Normal Mode) 下（通常也叫命令模式 (Command Mode)），依次按照以下表格中的按键得出的结果如右图所示（为方便演示，命令行窗口将缩小展示），最左侧的演示步骤是指右图的结果是从上一步骤经此操作得出。
+ table th:first-of-type { width: 15%; } table th:nth-of-type(2) { width: 25%; } table th:nth-of-type(3) { width: 30%; } table th:nth-of-type(4) { width: 30%; }  光标的移动 #     按键 说明 从 到     j / ⬇ 向下移动光标     l / ➡ 向右移动光标     k / ⬆ 向上移动光标     h / ⬅ 向左移动光标     8l / 8➡ 命令前加数字可代表命令操作次数，此处代表向右移动光标 8 次     W / w 移动到下一个单词头     B / b 移动到上一个单词头 或     E / e 移动到下一个单词尾 或     ge 移动到上一个单词尾 或     Home / 0 移动到行首     End / $ 移动到行尾     ^ 移动到本行第一个不是空白字符的位置     g_ 移动到本行最后一个不是空白字符的位置      </description>
     </item>
     
     <item>

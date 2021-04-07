@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="cn" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="正常模式 #  打开文件 test.txt 后，界面如图
+在正常模式 (Normal Mode) 下（通常也叫命令模式 (Command Mode)），依次按照以下表格中的按键得出的结果如右图所示（为方便演示，命令行窗口将缩小展示），最左侧的演示步骤是指右图的结果是从上一步骤经此操作得出。
+ table th:first-of-type { width: 15%; } table th:nth-of-type(2) { width: 25%; } table th:nth-of-type(3) { width: 30%; } table th:nth-of-type(4) { width: 30%; }  光标的移动 #     按键 说明 从 到     j / ⬇ 向下移动光标     l / ➡ 向右移动光标     k / ⬆ 向上移动光标     h / ⬅ 向左移动光标     8l / 8➡ 命令前加数字可代表命令操作次数，此处代表向右移动光标 8 次     W / w 移动到下一个单词头     B / b 移动到上一个单词头 或     E / e 移动到下一个单词尾 或     ge 移动到上一个单词尾 或     Home / 0 移动到行首     End / $ 移动到行尾     ^ 移动到本行第一个不是空白字符的位置     g_ 移动到本行最后一个不是空白字符的位置      ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="正常模式 | 一看就懂的 Vim 系列" />
+<meta property="og:description" content="正常模式 #  打开文件 test.txt 后，界面如图
+在正常模式 (Normal Mode) 下（通常也叫命令模式 (Command Mode)），依次按照以下表格中的按键得出的结果如右图所示（为方便演示，命令行窗口将缩小展示），最左侧的演示步骤是指右图的结果是从上一步骤经此操作得出。
+ table th:first-of-type { width: 15%; } table th:nth-of-type(2) { width: 25%; } table th:nth-of-type(3) { width: 30%; } table th:nth-of-type(4) { width: 30%; }  光标的移动 #     按键 说明 从 到     j / ⬇ 向下移动光标     l / ➡ 向右移动光标     k / ⬆ 向上移动光标     h / ⬅ 向左移动光标     8l / 8➡ 命令前加数字可代表命令操作次数，此处代表向右移动光标 8 次     W / w 移动到下一个单词头     B / b 移动到上一个单词头 或     E / e 移动到下一个单词尾 或     ge 移动到上一个单词尾 或     Home / 0 移动到行首     End / $ 移动到行尾     ^ 移动到本行第一个不是空白字符的位置     g_ 移动到本行最后一个不是空白字符的位置      " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thecommandbook.clox.nu/docs/vim/normal-mode/" />
+
+<title>正常模式 | 一看就懂的 Vim 系列 | The Command Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.51d02b1f9d32dfe66c0df98675127ea14b49e700c897b26128089ff6cfd49ae5.css" integrity="sha256-UdArH50y3&#43;ZsDfmGdRJ&#43;oUtJ5wDIl7JhKAif9s/UmuU=">
+<script defer src="/cn.search.min.90d2c0a7b62f3723010a33ddba4f31a1caec2733f5b9727dfcd328dfaf6b9946.js" integrity="sha256-kNLAp7YvNyMBCjPduk8xocrsJzP1uXJ9/NMo369rmUY="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>The Command Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><a href="/docs/algorithm/"><strong>算法</strong></a>
+<ul>
+<li><a href="/docs/algorithm/binary-tree/">二叉树</a></li>
+<li><a href="/docs/algorithm/sorting/">排序</a></li>
+<li><a href="/docs/algorithm/mono-stack/">单调栈</a></li>
+<li><a href="/docs/algorithm/linked-list/">链表</a></li>
+<li><a href="/docs/algorithm/union-find/">并查集</a></li>
+<li><a href="/docs/algorithm/knapsack/">背包问题</a></li>
+<li><a href="/docs/algorithm/kmp/">KMP 算法</a></li>
+</ul>
+</li>
+<li><a href="/docs/vim/"><strong>一看就懂的 Vim 系列</strong></a>
+<ul>
+<li><a href="/docs/vim/get-started/">从零开始</a></li>
+<li><a href="/docs/vim/normal-mode/"class=active>正常模式</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://clox.nu/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>正常模式 | 一看就懂的 Vim 系列</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#光标的移动">光标的移动</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="正常模式">
+  正常模式
+  <a class="anchor" href="#%e6%ad%a3%e5%b8%b8%e6%a8%a1%e5%bc%8f">#</a>
+</h1>
+<p>打开文件 <code>test.txt</code> 后，界面如图</p>
+<p><img src="assets/start.png" alt="" /></p>
+<p>在正常模式 (Normal Mode) 下（通常也叫命令模式 (Command Mode)），依次按照以下表格中的按键得出的结果如右图所示（为方便演示，命令行窗口将缩小展示），最左侧的演示步骤是指右图的结果是从上一步骤经此操作得出。</p>
+<style>
+table th:first-of-type {
+    width: 15%;
+}
+table th:nth-of-type(2) {
+    width: 25%;
+}
+table th:nth-of-type(3) {
+    width: 30%;
+}
+table th:nth-of-type(4) {
+    width: 30%;
+}
+</style>
+<h2 id="光标的移动">
+  光标的移动
+  <a class="anchor" href="#%e5%85%89%e6%a0%87%e7%9a%84%e7%a7%bb%e5%8a%a8">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">从</th>
+<th style="text-align:center">到</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><kbd>j</kbd> / <kbd>⬇</kbd></td>
+<td style="text-align:center">向下移动光标</td>
+<td style="text-align:center"><img src="assets/1-1.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/2-1.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>l</kbd> / <kbd>➡</kbd></td>
+<td style="text-align:center">向右移动光标</td>
+<td style="text-align:center"><img src="assets/1-1.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-2.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>k</kbd> / <kbd>⬆</kbd></td>
+<td style="text-align:center">向上移动光标</td>
+<td style="text-align:center"><img src="assets/2-1.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-1.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>h</kbd> / <kbd>⬅</kbd></td>
+<td style="text-align:center">向左移动光标</td>
+<td style="text-align:center"><img src="assets/1-1.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-2.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>8</kbd><kbd>l</kbd> / <kbd>8</kbd><kbd>➡</kbd></td>
+<td style="text-align:center">命令前加数字可代表命令操作次数，此处代表向右移动光标 8 次</td>
+<td style="text-align:center"><img src="assets/1-1.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-9.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>W</kbd> / <kbd>w</kbd></td>
+<td style="text-align:center">移动到下一个单词头</td>
+<td style="text-align:center"><img src="assets/1-1.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-7.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>B</kbd> / <kbd>b</kbd></td>
+<td style="text-align:center">移动到上一个单词头</td>
+<td style="text-align:center"><img src="assets/1-13.png" alt="" /> 或 <img src="assets/1-9.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-7.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>E</kbd> / <kbd>e</kbd></td>
+<td style="text-align:center">移动到下一个单词尾</td>
+<td style="text-align:center"><img src="assets/1-9.png" alt="" /> 或 <img src="assets/1-5.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-11.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>g</kbd><kbd>e</kbd></td>
+<td style="text-align:center">移动到上一个单词尾</td>
+<td style="text-align:center"><img src="assets/1-9.png" alt="" /> 或 <img src="assets/1-11.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/1-5.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>Home</kbd> / <kbd>0</kbd></td>
+<td style="text-align:center">移动到行首</td>
+<td style="text-align:center"><img src="assets/3-10.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/3-5.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>End</kbd> / <kbd>$</kbd></td>
+<td style="text-align:center">移动到行尾</td>
+<td style="text-align:center"><img src="assets/3-10.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/3-66.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>^</kbd></td>
+<td style="text-align:center">移动到本行第一个不是空白字符的位置</td>
+<td style="text-align:center"><img src="assets/3-10.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/3-5.png" alt="" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>g</kbd><kbd>_</kbd></td>
+<td style="text-align:center">移动到本行最后一个不是空白字符的位置</td>
+<td style="text-align:center"><img src="assets/3-10.png" alt="" /></td>
+<td style="text-align:center"><img src="assets/3-62.png" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cloxnu/thecommandbook.clox.nu/edit/main/src/content/docs/vim/normal-mode/index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>编辑本页</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thecommandbook-clox-nu" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#光标的移动">光标的移动</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
