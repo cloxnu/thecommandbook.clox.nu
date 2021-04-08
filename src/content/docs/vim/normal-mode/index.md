@@ -42,5 +42,17 @@ table th:nth-of-type(4) {
 | <kbd>End</kbd> / <kbd>$</kbd> | 移动到行尾 | ![](assets/3-10.png) | ![](assets/3-66.png) |
 | <kbd>^</kbd> | 移动到本行第一个不是空白字符的位置 | ![](assets/3-10.png) | ![](assets/3-5.png) |
 | <kbd>g</kbd><kbd>_</kbd> | 移动到本行最后一个不是空白字符的位置 | ![](assets/3-10.png) | ![](assets/3-62.png) |
+| <kbd>f</kbd> (<kbd>a</kbd> / <kbd>u</kbd>) | 移动到本行下一个为 `a` / `u` 的字符处 | ![](assets/3-5.png) | ![](assets/3-8.png) / ![](assets/3-10.png) |
+| <kbd>F</kbd> (<kbd>a</kbd> / <kbd>u</kbd>) | 移动到本行上一个为 `a` / `u` 的字符处 | ![](assets/3-14.png) | ![](assets/3-8.png) / ![](assets/3-10.png) |
+| <kbd>t</kbd> (<kbd>a</kbd> / <kbd>u</kbd>) | 移动到本行下一个为 `a` / `u` 的字符的上一个字符处 | ![](assets/3-5.png) | ![](assets/3-7.png) / ![](assets/3-9.png) |
+| <kbd>T</kbd> (<kbd>a</kbd> / <kbd>u</kbd>) | 移动到本行上一个为 `a` / `u` 的字符的下一个字符处 | ![](assets/3-14.png) | ![](assets/3-9.png) / ![](assets/3-11.png) |
+| (<kbd>f</kbd><kbd>a</kbd>) <kbd>;</kbd> | 在使用 `f/F/t/T` 进行跳转时，再使用 `;` 可快速跳转至下一指定字符位置 | ![](assets/3-5.png) | <kbd>f</kbd><kbd>a</kbd> 后： ![](assets/3-8.png) <kbd>;</kbd> 后： ![](assets/3-21.png) |
+| (<kbd>F</kbd><kbd>a</kbd>) <kbd>,</kbd> | 在使用 `f/F/t/T` 进行跳转时，再使用 `,` 可快速跳转至上一指定字符位置 | ![](assets/3-14.png) | <kbd>F</kbd><kbd>a</kbd> 后： ![](assets/3-8.png) <kbd>;</kbd> 后： ![](assets/3-21.png) |
+| <kbd>)</kbd> | 移动至下一个句首 | ![](assets/4-1.png) |  ![](assets/4-74.png) |
+| <kbd>(</kbd> | 移动至上一个句首 | ![](assets/4-74.png) |  ![](assets/4-1.png) |
+| (<kbd>3</kbd> / <kbd>5</kbd>) <kbd>G</kbd> | 移动至第 3/5 行的行首 | | |
+| <kbd>G</kbd><kbd>G</kbd> | 移动至第 1 行的行首，相当于 <kbd>1</kbd><kbd>G</kbd> | | |
+| <kbd>G</kbd> | 移动至最后一行的行首 | | |
+
 
 
